@@ -33,4 +33,13 @@ public class SingletonClass extends CommonInterface {
 		}
 		return singletonClass;
 	}
+	
+	
+	//clone method because when we clone the object with clone method it will call based class clone()
+	//here we override and pass the same object what we created or we can pass java.lang.UnsupportedOperationException
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		
+		return singletonClass;
+	}
 }
