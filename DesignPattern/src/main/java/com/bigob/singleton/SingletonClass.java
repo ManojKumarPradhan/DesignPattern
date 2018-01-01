@@ -1,5 +1,6 @@
 package com.bigob.singleton;
 
+import java.io.ObjectInputStream;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -12,8 +13,13 @@ public class SingletonClass extends CommonInterface {
 	private static final long serialVersionUID = -3488209126190051707L;
 	private static SingletonClass singletonClass = null;
 
+	static boolean  flag=false;
 	private SingletonClass() {
-
+		if(flag){
+			throw new RuntimeException("Singleton class can provide one instance");
+		}else{
+			flag=true;
+		}
 	}
 
 	// this is create a loop hole to multi threading
@@ -40,6 +46,16 @@ public class SingletonClass extends CommonInterface {
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		
+		return singletonClass;
+	}
+	
+	//for Serialization loop hole we can overrise readObject() or readResolver();
+	/*private void readObject(ObjectInputStream ois){
+		throw new IllegalArgumentException ("DeSerialization is not supported");
+	}*/
+	
+	public  Object readResolve(){
+		System.out.println("PrinterUtil:readResolve()");
 		return singletonClass;
 	}
 }
