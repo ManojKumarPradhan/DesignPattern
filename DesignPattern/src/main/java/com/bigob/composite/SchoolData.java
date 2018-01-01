@@ -23,13 +23,13 @@ public class SchoolData {
 		System.out.println(teacher1);
 		
 		School teacher2=new Teacher("Rajesh", 2, "Science");
-		teacher2.add(student1);
-		teacher2.add(student4);
+		teacher2.add(student2);
+		teacher2.add(student6);
 		System.out.println(teacher2);
 		
 		School teacher3=new Teacher("Brajech", 3, "English");
-		teacher3.add(student1);
-		teacher3.add(student4);
+		teacher3.add(student3);
+		teacher3.add(student5);
 		System.out.println(teacher3);
 		
 		School principal=new Principal("Udaya", 1);
